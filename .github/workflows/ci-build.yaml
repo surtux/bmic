@@ -19,7 +19,7 @@ jobs:
        pip install -r requirements.txt
     - name: Check code quality
       run: |
-       pylint health.py
+       pylint ./bmic/src/health.py
     - name: Test the code
       run: |
        nosetestv3
