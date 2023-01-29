@@ -27,6 +27,6 @@ def imc(height, weight):
     if height < 0 or weight < 0:
         raise ValueError("You should consider enter positive value for height and weight")
     #These conditions are used to test if a string value is passed to our function
-    if type(height) == str or type(weight) == str:
+    if type(height) == str or type(weight) == str: # pylint: disable=C0123
         raise TypeError("Please provide a non string value for height and weight")
     return weight / puissance(height, 2)
