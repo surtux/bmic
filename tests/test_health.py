@@ -1,6 +1,6 @@
 """Python to test """
 from unittest import TestCase
-from bmic import health
+from bmic.src import health
 
 class TestHealth(TestCase):
     """
