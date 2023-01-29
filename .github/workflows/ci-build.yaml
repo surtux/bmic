@@ -22,6 +22,6 @@ jobs:
        pylint ./src/health.py
     - name: Test the code
       run: |
-       nosetests3 ./src/
+       nosetests
        
       
