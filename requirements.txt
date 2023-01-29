@@ -2,3 +2,4 @@ nose
 coverage
 pinocchio
 unittest2
+pylint
