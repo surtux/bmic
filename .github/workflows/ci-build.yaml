@@ -1,1 +1,27 @@
+name: Health App
 
+on:
+  pull_request:
+    branches: ["main"]
+    
+jobs:
+  build:
+    name: CI my code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8.10"
+    - name: Install dependencies
+      run: |
+       pip install -r requirements.txt
+    - name: Check code quality
+      run: |
+       pylint health.py
+    - name: Test the code
+      run: |
+       nosetestv3
+       
+      
