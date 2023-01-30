@@ -25,8 +25,8 @@ while True:
         break
     #From the line below, we get the value of the height and weight and compute the bmi
     if EVENT == 'calculate':
-        HEIGHT = VALUES['input2']
-        WEIGHT = VALUES['input1']
+        HEIGHT = float(VALUES['input2'])
+        WEIGHT = float(VALUES['input1'])
         BMI = health.imc(HEIGHT, WEIGHT)
         WINDOW['bmi'].update(str(BMI))
 #Just to be sure that the window will be close properly
