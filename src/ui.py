@@ -29,5 +29,5 @@ while True:
         WEIGHT = float(VALUES['input1'])
         BMI = health.imc(HEIGHT, WEIGHT)
         WINDOW['bmi'].update(str(BMI))
-#Just to be sure that the window will be close properly
+#Just to be sure that the window will be close properly man
 WINDOW.close()
