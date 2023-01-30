@@ -7,10 +7,10 @@ from bmic.src import health
 
 #I declare the layout here
 layout = [
-  [sg.Text('Weight'), [sg.Input(key='input1')]]
-  [sg.Text('height'), [sg.input(key='input2')]],
-  [sg.Button('Calculate', key='calculate')]
-  [sg.Text('BMI'), [sg.text('N/A', key='bmi')]]
+  [sg.Text('Weight'), [sg.Input(key = 'input1')]]
+  [sg.Text('height'), [sg.input(key = 'input2')]],
+  [sg.Button('Calculate', key = 'calculate')]
+  [sg.Text('BMI', enable_events = True), [sg.text('N/A', key = 'bmi')]]
 ]
 
 #The line below create the windows
