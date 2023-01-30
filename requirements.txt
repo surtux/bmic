@@ -3,3 +3,4 @@ coverage
 pinocchio
 unittest2
 pylint
+PySimpleGUI
