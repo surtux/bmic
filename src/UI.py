@@ -23,7 +23,7 @@ while True:
   #Line use to close the windows when the user hit the cross icon above the windows
   if event == sg.WIN_CLOSED:
     break
-  if event == 'bmi':
+  if event == 'calculate':
     height = values['input2']
     weight = values['input1']
     bmi = health.bmic(height, weight)
