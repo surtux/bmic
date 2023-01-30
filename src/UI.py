@@ -27,7 +27,7 @@ while True:
   if event == 'calculate':
     height = values['input2']
     weight = values['input1']
-    bmi = health.bmic(height, weight)
+    bmi = health.imc(height, weight)
     window['bmi'].update(str(bmi))
 #Just to be sure that the window will be close properly
 window.close()
