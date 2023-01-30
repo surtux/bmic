@@ -7,10 +7,10 @@ from bmic.src import health
 
 #I declare the layout here
 layout = [
-  [sg.Text('Weight'), [sg.Input(), key='input1']]
-  [sg.Text('height'), [sg.input(), key='input2']],
-  [sg.Button('Calculate'), key='button1']
-  [sg.Text('BMI'), [sg.text('N/A')]]
+  [sg.Text('Weight'), [sg.Input(key='input1')]]
+  [sg.Text('height'), [sg.input(key='input2')]],
+  [sg.Button('Calculate', key='calculate')]
+  [sg.Text('BMI'), [sg.text('N/A', key='bmi')]]
 ]
 
 #The line below create the windows
@@ -23,6 +23,10 @@ while True:
   #Line use to close the windows when the user hit the cross icon above the windows
   if event == sg.WIN_CLOSED:
     break
+  if event == 'bmi':
+    height = values['input2']
+    weight = values['input1']
+    bmi = health.bmic(height, weight)
     
 #Just to be sure that the window will be close properly
 window.close()
