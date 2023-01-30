@@ -3,7 +3,7 @@ This is the UI code. One thing, actually I don't now
 how to test the elements of this UI.
 """
 import PySimpleGUI as sg
-from bmic.src import health
+import health
 
 #I declare the layout here
 layout = [
