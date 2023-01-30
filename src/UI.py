@@ -2,9 +2,8 @@
 This is the UI code. One thing, actually I don't now
 how to test the elements of this UI.
 """
-# pylint: disable=C0103
 import PySimpleGUI as sg
-import bmic.health
+import health
 
 #I declare the layout here
 # pylint: disable=C0330
