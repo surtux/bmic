@@ -22,7 +22,7 @@ jobs:
        pylint ./src/health.py
     - name: Check code quality UI file
       run: |
-       pylint ./src/UI.py
+       pylint ./src/ui.py
     - name: Test the code
       run: |
        nosetests
