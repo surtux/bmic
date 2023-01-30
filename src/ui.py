@@ -6,7 +6,6 @@ import PySimpleGUI as sg
 import health
 
 #I declare the layout here
-# pylint: disable=C0330
 LAYOUT = [
   [sg.Text('Weight'), [sg.Input(key='input1')]],
   [sg.Text('height'), [sg.Input(key='input2')]],
