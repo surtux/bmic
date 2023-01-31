@@ -5,12 +5,12 @@ how to test the elements of this UI.
 import PySimpleGUI as sg
 import health
 
-#I declare the layout here
+#I declare the layout of the window here
 LAYOUT = [
   [sg.Text('Weight'), [sg.Input(key='input1')]],
   [sg.Text('height'), [sg.Input(key='input2')]],
   [sg.Button('Calculate', key='calculate')],
-  [sg.Text('BMI', enable_events=True), [sg.Text('N/A', key='bmi')]]
+  [sg.Text('N/A', key='bmi')]
 ]
 
 #The line below create the windows
