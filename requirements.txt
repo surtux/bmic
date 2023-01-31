@@ -4,3 +4,4 @@ pinocchio
 unittest2
 pylint
 PySimpleGUI
+ibmcloudant
