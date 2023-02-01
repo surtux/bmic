@@ -23,6 +23,9 @@ jobs:
     - name: Check code quality UI file
       run: |
        pylint ./src/ui.py
+    - name: Check code quality db file
+      run: |
+       pylint ./src/db.py
     - name: Test the code
       run: |
        nosetests
