@@ -13,11 +13,6 @@ class TestDb(TestCase):
         SERVICE = CloudantV1(authenticator=AUTHENTICATOR)
         SERVICE.set_service_url(keys.URL)
     
-    @classmethod
-    def tearDownClass():
-        """
-        Will be executed after all tests have been run
-        """
 
     def test_create_db(self):
         """
@@ -25,3 +20,10 @@ class TestDb(TestCase):
         really been created on IBM cloud instance 
         """
         self.assertEqual(db.create_db("goofy"), True)
+    
+    def test_delete_db(self):
+        """
+        Our second test. Should delete the db create from the previous
+        test
+        """
+        self.assertEqual(db.delete_db("goofy"), True)

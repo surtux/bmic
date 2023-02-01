@@ -6,6 +6,7 @@ from ibmcloudant.cloudant_v1 import CloudantV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from bmic.src import keys
 
+
 def authenticate_db():
     """You should first authenticate"""
     authenticator = IAMAuthenticator(keys.APIKEY)
@@ -20,4 +21,12 @@ def create_db(name):
     """
     auth = authenticate_db()
     response = auth.put_database(db=name, partitioned=True).get_result()
+    return response['ok']
+
+def delete_db(name):
+    """
+    This function is here to teardown connection to db
+    """
+    auth = authenticate_db()
+    response = auth.delete_database(db=name).get_result()
     return response['ok']
