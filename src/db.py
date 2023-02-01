@@ -35,4 +35,5 @@ def insert_doc(name, information):
     """Code to insert a document in cloudant"""
     service = authenticate_db()
     event_doc = information
-    service.post_document(db=name, doc_id=id, document=event_doc)
+    result = service.post_document(db=name, doc_id=id, document=event_doc).get_result()
+    return result
