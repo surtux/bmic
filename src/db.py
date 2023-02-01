@@ -4,7 +4,7 @@ so that we can store all the relate bmi information of users
 """
 from ibmcloudant.cloudant_v1 import CloudantV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-from bmic.src import keys
+import keys
 
 
 def authenticate_db():
