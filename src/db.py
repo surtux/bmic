@@ -16,7 +16,7 @@ def authenticate_db():
 
 def create_db(name):
     """
-    We should first connect to the db, then then
+    We should first connect to the db, then
     insert the users and the informations
     """
     auth = authenticate_db()
