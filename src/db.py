@@ -30,3 +30,9 @@ def delete_db(name):
     auth = authenticate_db()
     response = auth.delete_database(db=name).get_result()
     return response['ok']
+
+def insert_doc(name, information):
+    """Code to insert a document in cloudant"""
+    service = authenticate_db()
+    event_doc = information
+    service.post_document(db=name, doc_id=id, document=event_doc)
