@@ -30,7 +30,7 @@ def delete_db(dbname, service):
 
 def insert_doc(dbname, information, service):
     """Code to insert a document in cloudant"""
-    #Warning! The parameter of Document Method is not a Dict
+    #Warning! The parameter of Document Method is not a Dictionnary
     event_doc = Document(
         id=information["_id"],
         first_name=information["first name"],
