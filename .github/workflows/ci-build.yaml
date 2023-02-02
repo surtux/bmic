@@ -20,6 +20,9 @@ jobs:
     - name: Check code quality Health file
       run: |
        pylint ./src/health.py
+    - name: Check code quality app file
+      run: |
+       pylint ./src/app.py
     - name: Check code quality UI file
       run: |
        pylint ./src/ui.py
