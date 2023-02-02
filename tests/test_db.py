@@ -8,14 +8,16 @@ import json
 INFO = {}
 class TestDb(TestCase):
     """The test on our db will take place here"""
+    database1 = False
+    database2 = False
+    auth = db.authenticate()
     @classmethod
     def setUpClass(cls):
         """Test Fixture. Will be executed before all tests"""
         #Those three lines, allowed us to connect to the cloudant endpoint
         global INFO
-        auth = db.authenticate_db()
-        database = db.create_db("baba", auth)
-        database1 = db.create_db("bobo", auth)
+        TestDb.database1 = db.create_db("baba", TestDb.auth)
+        TestDb.database2 = db.create_db("bobo", TestDb.auth)
         with open("./fixtures/data.json") as record:
             INFO = json.load(record) 
 
@@ -24,7 +26,7 @@ class TestDb(TestCase):
         Our first test. Should create a db and check if it has
         really been created on IBM cloud instance 
         """
-        self.assertEqual(database, True)
+        self.assertEqual(TestDb.database1, True)
     
     def test_delete_db(self):
         """
@@ -39,4 +41,4 @@ class TestDb(TestCase):
         is recorded
         """
         global INFO
-        doc = 
+        self.assertEqual(db.insert_doc("baba", INFO, TestDb.auth), True)
