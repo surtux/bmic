@@ -7,8 +7,8 @@ import health
 
 #The layout for bmi calculation windows
 BMI = [
-  [sg.Text('Weight'), [sg.Input(key='input1')]],
-  [sg.Text('height'), [sg.Input(key='input2')]],
+  [sg.Text('Weight'), [sg.Input(key='weight')]],
+  [sg.Text('height'), [sg.Input(key='height')]],
   [sg.Button('Calculate', key='calculate')],
   [sg.Text('N/A', key='bmi')]
 ]
