@@ -2,10 +2,9 @@
 This python file will be use to manipulate ou remote IBM db
 so that we can store all the relate bmi information of users
 """
-from ibmcloudant.cloudant_v1 import CloudantV1
+from ibmcloudant.cloudant_v1 import CloudantV1, Document
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import keys
-
 
 def authenticate_db():
     """You should first authenticate"""
@@ -31,6 +30,14 @@ def delete_db(dbname, service):
 
 def insert_doc(dbname, information, service):
     """Code to insert a document in cloudant"""
-    event_doc = information
-    result = service.post_document(db=dbname, doc_id=id, document=event_doc).get_result()
+    #Warning! The parameter of Document Method is not a Dict
+    event_doc = Document(
+        id=information["_id"],
+        first_name=information["first name"],
+        last_name=information["last name"],
+        Date_of_birth=information["Date of birth"],
+        weight=information["weight"],
+        height=information["height"]
+    )
+    result = service.post_document(dbname, event_doc).get_result()
     return result["ok"]
