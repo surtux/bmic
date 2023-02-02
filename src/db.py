@@ -23,17 +23,17 @@ def create_db(name):
     response = auth.put_database(db=name, partitioned=True).get_result()
     return response['ok']
 
-def delete_db(name):
+def delete_db(dbname):
     """
     This function is here to teardown connection to db
     """
     auth = authenticate_db()
-    response = auth.delete_database(db=name).get_result()
+    response = auth.delete_database(db=dbname).get_result()
     return response['ok']
 
-def insert_doc(name, information):
+def insert_doc(dbname, information):
     """Code to insert a document in cloudant"""
     service = authenticate_db()
     event_doc = information
-    result = service.post_document(db=name, doc_id=id, document=event_doc).get_result()
+    result = service.post_document(db=dbname, doc_id=id, document=event_doc).get_result()
     return result
