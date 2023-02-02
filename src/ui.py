@@ -5,29 +5,28 @@ how to test the elements of this UI.
 import PySimpleGUI as sg
 import health
 
-#I declare the layout of the window here
-LAYOUT = [
+#The layout for bmi calculation windows
+BMI = [
   [sg.Text('Weight'), [sg.Input(key='input1')]],
   [sg.Text('height'), [sg.Input(key='input2')]],
   [sg.Button('Calculate', key='calculate')],
   [sg.Text('N/A', key='bmi')]
 ]
-
-#The line below create the windows
-WINDOW = sg.Window('Calculate your BMI', LAYOUT)
-
-#infinite loop to catch different events related to the application
-while True:
-    #The line use below, allowed to catch windows events an their values
-    EVENT, VALUES = WINDOW.read()
-    #Line use to close the windows when the user hit the cross icon above the windows
-    if EVENT == sg.WIN_CLOSED:
-        break
-    #From the line below, we get the value of the height and weight and compute the bmi
-    if EVENT == 'calculate':
-        HEIGHT = float(VALUES['input2'])
-        WEIGHT = float(VALUES['input1'])
-        BMI = health.imc(HEIGHT, WEIGHT)
-        WINDOW['bmi'].update(str(BMI))
-#Just to be sure that the window will be close properly man
-WINDOW.close()
+#The layout for registration windows
+REGISTRATION = [
+  [sg.Text("Phone Number"), [sg.Input(key="phone")]],
+  [sg.Text("First Name"), [sg.Input(key="first name")]],
+  [sg.Text("Last Name"), [sg.Input(key="last name")]],
+  [sg.Text("Date of Birth"), [sg.Input(key="birth")]],
+  [sg.Text("weight"), [sg.Input(key="weight")]],
+  [sg.Text("Height"), [sg.Input(key="height")]]
+]
+#The layout for notification windows
+NOTIFICATION = [
+    [sg.Text("Notification", key="notification")]
+]
+#The layout for login windows
+LOGIN = [
+  [sg.Text("username"), [sg.Input(key="username")]],
+  [sg.Text("password"), [sg.Input(key="password")]]
+]

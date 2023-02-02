@@ -29,7 +29,10 @@ def delete_db(dbname, service):
     return response['ok']
 
 def insert_doc(dbname, information, service):
-    """Code to insert a document in cloudant"""
+    """
+    Code to insert a document in cloudant. This method should be
+    called in conjunction with registration windows only
+    """
     #Warning! The parameter of Document Method is not a Dictionnary
     event_doc = Document(
         id=information["_id"],
