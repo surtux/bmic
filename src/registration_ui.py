@@ -6,6 +6,7 @@ import db
 import datetime as dat
 
 LAYOUT1 = [
+    [sg.Text("Phone Number", key="phone"), [sg.Input(key="input0")]],
     [sg.Text("First Name", key='first'), [sg.Input(key='input1')]],
     [sg.Text("Last Name", key='last'), [sg.Input(key='input2')]],
     [sg.Text("Date of Birth", key='birth'), [sg.Input(key='input3')]],
