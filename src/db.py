@@ -41,6 +41,12 @@ def insert_doc(dbname, information, service):
         Date_of_birth=information["Date of birth"],
         weight=information["weight"],
         height=information["height"]
+        password=information["password"]
     )
     result = service.post_document(dbname, event_doc).get_result()
     return result["ok"]
+
+def get_record(id, password, service):
+    """
+    This function query the db for a specific record
+    """
