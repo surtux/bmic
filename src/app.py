@@ -2,8 +2,9 @@
 This application keep track of the bmi so that one
 can control his health
 """
-#import db
+# pylint: disable=invalid-name
 import PySimpleGUI as sg
+import db
 import ui
 #import health
 
@@ -19,4 +20,21 @@ import ui
         #WEIGHT = float(VALUES['weight'])
         #BMI = health.imc(HEIGHT, WEIGHT)
         #WINDOWS['bmi'].update(str(BMI))
-WINDOWS = sg.Window("Login Screen", ui.LOGIN).read()
+#sg.theme("LightBlue2")
+WINDOWS = sg.Window("Login Screen", ui.LOGIN)
+WINDOWS1 = sg.Window("Registration Screen", ui.REGISTRATION, element_justification='r')
+while True:
+    events, values = WINDOWS.read()
+    if events == sg.WIN_CLOSED:
+        break
+    if events == "login":
+        user_id = values['username']
+        password = values['password']
+        service = db.authenticate_db()
+        response = db.get_record(user_id, "bmi", service)
+        print(response)
+        if bool(response):
+            pass
+        else:
+            WINDOWS.close()
+            WINDOWS1.read()

@@ -2,6 +2,9 @@
 This python file will be use to manipulate ou remote IBM db
 so that we can store all the relate bmi information of users
 """
+# pylint: disable=ungrouped-imports
+# pylint: disable=inconsistent-return-statements
+from ibm_cloud_sdk_core import ApiException
 from ibmcloudant.cloudant_v1 import CloudantV1, Document
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import keys
@@ -60,10 +63,10 @@ def get_record(identity, name, service):
     """
     This function query the db for a specific record
     """
-    result = service.post_all_docs(
-        db=name,
-        include_docs=True,
-        start_key=identity,
-        limit=1
-    )
-    return bool(result)
+    try:
+        service.get_document(db=name, doc_id=identity).get_result()
+        return True
+    # pylint: disable=invalid-name
+    except ApiException as ae:
+        if ae.code == 404:
+            return False
