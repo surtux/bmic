@@ -62,7 +62,7 @@ class TestDb(TestCase):
         self.assertEqual(db.delete_db("bobo", TestDb.auth), True)
     def test_insert_doc(self):
         """
-        We are going to test insertion into cloudant
+        Our third test. We are going to test insertion into cloudant
         Basically will insert a record, and then check if the record
         is recorded
         """
@@ -70,7 +70,7 @@ class TestDb(TestCase):
         self.assertEqual(db.insert_doc("baba", INFO, TestDb.auth), True)
     def test_get_record(self):
         """
-        We are going to retrieve document from cloudant db 
+        Our fourth test. We are going to retrieve document from cloudant db 
         """
         global INFO
         self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)
