@@ -2,7 +2,6 @@
 This is the UI code. One thing, actually I don't now
 how to test the elements of this UI.
 """
-# pylint: disable=bad-continuation
 # pylint: disable=trailing-whitespace
 import PySimpleGUI as sg
 
