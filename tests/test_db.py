@@ -12,9 +12,14 @@ INFO = {
         "Date of birth": "1985-07-05",
         "weight": "80",
         "height": "1.74",
-        "password": "jujube"
+        "password": "jujube",
+        "bmi": "25.75"
     }
 class TestDb(TestCase):
+    ##########################################################################
+    #                          TESTS FIXTURES                                #
+    ##########################################################################
+    
     """The test on our db will take place here"""
     database1 = False
     database2 = False

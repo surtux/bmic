@@ -34,15 +34,25 @@ def insert_doc(dbname, information, service):
     called in conjunction with registration windows only
     """
     #Warning! The parameter of Document Method is not a Dictionnary
-    event_doc = Document(
-        id=information["_id"],
-        first_name=information["first name"],
-        last_name=information["last name"],
-        Date_of_birth=information["Date of birth"],
-        weight=information["weight"],
-        height=information["height"],
-        password=information["password"]
-    )
+    #This condition is used to check if it is a registered user. If the case, just update his bmi
+    if bool(get_record(information["_id"], dbname, service)):
+        event_doc = Document(
+            id=information["_id"],
+            weight=information["weight"],
+            height=information["height"],
+            bmi=information["bmi"]
+        )
+    else:
+        #The user is not registered, so he should do it first
+        event_doc = Document(
+            id=information["_id"],
+            first_name=information["first name"],
+            last_name=information["last name"],
+            Date_of_birth=information["Date of birth"],
+            weight=information["weight"],
+            height=information["height"],
+            password=information["password"]
+        )
     result = service.post_document(dbname, event_doc).get_result()
     return result["ok"]
 
