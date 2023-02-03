@@ -5,7 +5,7 @@ can control his health
 #import db
 import PySimpleGUI as sg
 import ui
-import health
+#import health
 
 #WINDOWS = sg.Window("BMI CALCULATION", ui.BMI)
 
