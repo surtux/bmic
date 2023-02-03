@@ -37,4 +37,18 @@ while True:
             pass
         else:
             WINDOWS.close()
-            WINDOWS1.read()
+            while True:
+                events1, values1 = WINDOWS1.read()
+                if events1 == 'register':
+                    DOCUMENT = {}
+                    DOCUMENT["_id"] = values1["user id"]
+                    DOCUMENT["first name"] = values1["first name"]
+                    DOCUMENT["last name"] = values1["last name"]
+                    DOCUMENT["Date of birth"] = values1["birth"]
+                    DOCUMENT["weight"] = values1["weight"]
+                    DOCUMENT["height"] = values1["height"]
+                    DOCUMENT["password"] = values1["password"]
+                    print(DOCUMENT)
+                    service = db.authenticate_db()
+                    db.insert_doc("bmi", DOCUMENT, service)
+                    break
