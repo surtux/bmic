@@ -19,6 +19,7 @@ REGISTRATION = [
   [sg.Text("Date of Birth"), sg.Input(key="birth")],
   [sg.Text("weight"), sg.Input(key="weight")],
   [sg.Text("Height"), sg.Input(key="height")],
+  [sg.Text("password"), sg.Input(key="password")],
   [sg.Button("Register", key='register')]
 ]
 #The layout for notification windows
