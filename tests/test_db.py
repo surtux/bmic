@@ -11,7 +11,8 @@ INFO = {
         "last name": "Coucout",
         "Date of birth": "1985-07-05",
         "weight": "80",
-        "height": "1.74"
+        "height": "1.74",
+        "password": "jujube"
     }
 class TestDb(TestCase):
     """The test on our db will take place here"""
@@ -27,10 +28,19 @@ class TestDb(TestCase):
         TestDb.database2 = db.create_db("bobo", TestDb.auth)
         #with open("./fixtures/data.json") as record:
         #    INFO = json.load(record)
-    #@classmethod
-    #def tearDown(cls):
-    #    """Method to clean everything after all the test passes"""
-    #    db.delete_db("baba", TestDb.auth)
+    @classmethod
+    def tearDown(cls):
+        """Method to clean everything after all the test passes"""
+        toto = db.delete_db("baba", TestDb.auth)
+
+    def tearDown(self):
+        """I try to close a db after all the tests cases passed"""
+        
+    
+    ###########################################################################
+    #                          TESTS CASES                                    #
+    ###########################################################################            
+
 
     def test_create_db(self):
         """
@@ -53,3 +63,9 @@ class TestDb(TestCase):
         """
         global INFO
         self.assertEqual(db.insert_doc("baba", INFO, TestDb.auth), True)
+    def test_get_record(self):
+        """
+        We are going to retrieve document from cloudant db 
+        """
+        global INFO
+        self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)
