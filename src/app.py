@@ -21,7 +21,7 @@ import ui
         #WINDOWS['bmi'].update(str(BMI))
 #sg.theme("LightBlue2")
 WINDOWS = sg.Window("Login Screen", ui.LOGIN)
-WINDOWS1 = sg.Window("Registration Screen", ui.REGISTRATION)
+WINDOWS1 = sg.Window("Registration Screen", ui.REGISTRATION, element_justification='r')
 while True:
     events, values = WINDOWS.read()
     if events == sg.WIN_CLOSED:
