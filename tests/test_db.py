@@ -68,4 +68,4 @@ class TestDb(TestCase):
         We are going to retrieve document from cloudant db 
         """
         global INFO
-        self.assertEqual(db.get_record(INFO["_id"], INFO["password"], "baba", TestDb.auth), True)
+        self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)

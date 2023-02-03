@@ -46,18 +46,14 @@ def insert_doc(dbname, information, service):
     result = service.post_document(dbname, event_doc).get_result()
     return result["ok"]
 
-def get_record(id, password, name, service):
+def get_record(identity, name, service):
     """
     This function query the db for a specific record
     """
-    cles = [id,password]
     result = service.post_all_docs(
         db=name,
         include_docs=True,
-        start_key=id,
+        start_key=identity,
         limit=1
     )
-    if result:
-        return True
-    else:
-        return False
+    return bool(result)
