@@ -13,7 +13,7 @@ BMI = [
 ]
 #The layout for registration windows
 REGISTRATION = [
-  [sg.Text("Phone Number"), [sg.Input(key="phone")]],
+  [sg.Text("User ID"), [sg.Input(key="user id")]],
   [sg.Text("First Name"), [sg.Input(key="first name")]],
   [sg.Text("Last Name"), [sg.Input(key="last name")]],
   [sg.Text("Date of Birth"), [sg.Input(key="birth")]],
