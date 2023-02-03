@@ -31,6 +31,11 @@ class TestDb(TestCase):
     #def tearDown(cls):
     #    """Method to clean everything after all the test passes"""
     #    db.delete_db("baba", TestDb.auth)
+    
+    ###########################################################################
+    #                          TESTS CASES                                    #
+    ###########################################################################            
+
 
     def test_create_db(self):
         """
@@ -53,3 +58,8 @@ class TestDb(TestCase):
         """
         global INFO
         self.assertEqual(db.insert_doc("baba", INFO, TestDb.auth), True)
+    def test_get_record(self):
+        """
+        We are going to retrieve document from cloudant db 
+        """
+        self.assertEqual(db.get_record(id, password), True)
