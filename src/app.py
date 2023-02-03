@@ -2,8 +2,9 @@
 This application keep track of the bmi so that one
 can control his health
 """
-import db
+# pylint: disable=invalid-name
 import PySimpleGUI as sg
+import db
 import ui
 #import health
 
