@@ -3,6 +3,7 @@ This python file will be use to manipulate ou remote IBM db
 so that we can store all the relate bmi information of users
 """
 # pylint: disable=ungrouped-imports
+# pylint: disable=inconsistent-return-statements
 from ibm_cloud_sdk_core import ApiException
 from ibmcloudant.cloudant_v1 import CloudantV1, Document
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
