@@ -64,8 +64,8 @@ def get_record(identity, name, service):
     This function query the db for a specific record
     """
     try:
-        service.get_document(db=name, doc_id=identity).get_result()
-        return True
+        response = service.get_document(db=name, doc_id=identity).get_result()
+        return bool(response)
     # pylint: disable=invalid-name
     except ApiException as ae:
         if ae.code == 404:

@@ -22,7 +22,6 @@ class TestDb(TestCase):
     
     """The test on our db will take place here"""
     database1 = False
-    database2 = False
     auth = db.authenticate_db()
     @classmethod
     def setUpClass(cls):
@@ -30,18 +29,7 @@ class TestDb(TestCase):
         #Those three lines, allowed us to connect to the cloudant endpoint
         global INFO
         TestDb.database1 = db.create_db("baba", TestDb.auth)
-        TestDb.database2 = db.create_db("bobo", TestDb.auth)
-        #with open("./fixtures/data.json") as record:
-        #    INFO = json.load(record)
-    @classmethod
-    def tearDown(cls):
-        """Method to clean everything after all the test passes"""
-        toto = db.delete_db("baba", TestDb.auth)
 
-    def tearDown(self):
-        """I try to close a db after all the tests cases passed"""
-        
-    
     ###########################################################################
     #                          TESTS CASES                                    #
     ###########################################################################            
@@ -54,23 +42,11 @@ class TestDb(TestCase):
         """
         self.assertEqual(TestDb.database1, True)
     
-    def test_delete_db(self):
-        """
-        Our second test. Should delete the db create from the previous
-        test
-        """
-        self.assertEqual(db.delete_db("bobo", TestDb.auth), True)
-    def test_insert_doc(self):
-        """
-        We are going to test insertion into cloudant
-        Basically will insert a record, and then check if the record
-        is recorded
-        """
-        global INFO
-        self.assertEqual(db.insert_doc("baba", INFO, TestDb.auth), True)
     def test_get_record(self):
         """
         We are going to retrieve document from cloudant db 
         """
         global INFO
+        db.insert_doc("baba", INFO, TestDb.auth)
         self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)
+        db.delete_db("baba", TestDb.auth)
