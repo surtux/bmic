@@ -70,3 +70,14 @@ def get_record(identity, name, service):
     except ApiException as ae:
         if ae.code == 404:
             return False
+
+#def check_duplicate(id, name, service):
+#    """
+#    This function is useful during registration. It sole purpose
+#    is to check to see if a document with this user id exists
+#    if it is ths case, the registration process should enforce user
+#    to change his user id
+#    """
+#    answer = get_record(id, name, service)
+#    return bool(answer == )
+

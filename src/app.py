@@ -34,7 +34,9 @@ while True:
         response = db.get_record(user_id, "bmi", service)
         print(response)
         if bool(response):
-            pass
+            #We should display his or her dashboard
+            print("L'utilisateur existe")
+            break
         else:
             WINDOWS.close()
             while True:
@@ -48,6 +50,7 @@ while True:
                     DOCUMENT["weight"] = values1["weight"]
                     DOCUMENT["height"] = values1["height"]
                     DOCUMENT["password"] = values1["password"]
+                    if db.get_record == True or DOCUMENT:
                     print(DOCUMENT)
                     service = db.authenticate_db()
                     db.insert_doc("bmi", DOCUMENT, service)

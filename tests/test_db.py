@@ -22,6 +22,7 @@ class TestDb(TestCase):
     
     """The test on our db will take place here"""
     database1 = False
+    database2 = False
     auth = db.authenticate_db()
     @classmethod
     def setUpClass(cls):
@@ -29,6 +30,7 @@ class TestDb(TestCase):
         #Those three lines, allowed us to connect to the cloudant endpoint
         global INFO
         TestDb.database1 = db.create_db("baba", TestDb.auth)
+        #TestDb.database2 = db.create_db("mopao", TestDb.auth)
 
     ###########################################################################
     #                          TESTS CASES                                    #
@@ -50,3 +52,11 @@ class TestDb(TestCase):
         db.insert_doc("baba", INFO, TestDb.auth)
         self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)
         db.delete_db("baba", TestDb.auth)
+
+    #def test_check_duplicate(self):
+    #   """
+    #    We are going to check if the user is already in our db
+    #    """
+    #    db.insert_doc("Test_user", INFO, TestDb.auth)
+    #    self.assertEqual(db.check_ducplicate(INFO["_id"], TestDb.auth), True)
+    #    db.delete_db("Test_user", TestDb.auth)
