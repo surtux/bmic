@@ -38,7 +38,7 @@ def insert_doc(dbname, information, service):
     """
     #Warning! The parameter of Document Method is not a Dictionnary
     #This condition is used to check if it is a registered user. If the case, just update his bmi
-    if bool(get_record(information["_id"], dbname, service)):
+    if bool(get_record(information["_id"], dbname, service)) is True:
         event_doc = Document(
             id=information["_id"],
             weight=information["weight"],
@@ -51,7 +51,7 @@ def insert_doc(dbname, information, service):
             id=information["_id"],
             first_name=information["first name"],
             last_name=information["last name"],
-            Date_of_birth=information["Date of birth"],
+            Date_of_birth=information["Date of Birth"],
             weight=information["weight"],
             height=information["height"],
             password=information["password"]
@@ -70,3 +70,9 @@ def get_record(identity, name, service):
     except ApiException as ae:
         if ae.code == 404:
             return False
+
+def retrieve_document(identity, name, service):
+    """
+    Same as the function above. But in this case the document is return entirely
+    """
+    return service.get_document(db=name, doc_id=identity).get_result()
