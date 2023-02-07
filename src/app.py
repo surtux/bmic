@@ -35,7 +35,7 @@ while True:
             #Normally we should display the dashboard of the user
             print("The password is correct")
         else:
-            print(f"The password is incorrect")
+            print("The password is incorrect")
         print("Je suis toujours dans la boucle")
         #This condition is necessary so that the
         #loop will pause here to get the values of events and values
