@@ -9,7 +9,7 @@ INFO = {
         "_id": "doudou:693323272",
         "first name": "Doragorn",
         "last name": "Coucout",
-        "Date of birth": "1985-07-05",
+        "Date of Birth": "1985-07-05",
         "weight": "80",
         "height": "1.74",
         "password": "jujube",
@@ -53,10 +53,24 @@ class TestDb(TestCase):
         self.assertEqual(db.get_record(INFO["_id"], "baba", TestDb.auth), True)
         db.delete_db("baba", TestDb.auth)
 
-    #def test_check_duplicate(self):
-    #   """
-    #    We are going to check if the user is already in our db
-    #    """
-    #    db.insert_doc("Test_user", INFO, TestDb.auth)
-    #    self.assertEqual(db.check_ducplicate(INFO["_id"], TestDb.auth), True)
-    #    db.delete_db("Test_user", TestDb.auth)
+    def test_retrieve_document(self):
+        """
+        The test should retrieve one or more document from a database.
+        """
+        #We first create an empty db
+
+        #We try to retrieve a document. The count should be zero or none or and exception
+
+        #We then first insert a document in the create db
+
+        #we retrieve the document and make sure that the count is 1
+
+        #We then delete the document from the db
+
+        #to make sure we try to retrieve the delete document. we should get nothin
+
+        #In second position we insert 3 documents in the db
+
+        #we try to retrieve all the document. We should get the count of 3 documents
+
+        #we then delete the db

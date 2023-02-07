@@ -29,9 +29,7 @@ NOTIFICATION = [
 ]
 #The layout for login windows
 LOGIN = [
-  [sg.Text("username"), sg.Input(key="username")],
+  [sg.Text("username"), sg.Input(key="_id")],
   [sg.Text("password"), sg.Input(key="password")],
-  [sg.Push(), sg.Button("Login", key="login"), 
-  sg.Text("Forgot Password", key="forgot password"), 
-  sg.Button("register", key="register")]
+  [sg.Push(), sg.Button("Login", key="login"), sg.Text("Forgot Password", key="forgot password")]
 ]

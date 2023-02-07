@@ -38,7 +38,7 @@ def insert_doc(dbname, information, service):
     """
     #Warning! The parameter of Document Method is not a Dictionnary
     #This condition is used to check if it is a registered user. If the case, just update his bmi
-    if bool(get_record(information["_id"], dbname, service)):
+    if bool(get_record(information["_id"], dbname, service)) is True:
         event_doc = Document(
             id=information["_id"],
             weight=information["weight"],
@@ -71,13 +71,8 @@ def get_record(identity, name, service):
         if ae.code == 404:
             return False
 
-#def check_duplicate(id, name, service):
-#    """
-#    This function is useful during registration. It sole purpose
-#    is to check to see if a document with this user id exists
-#    if it is ths case, the registration process should enforce user
-#    to change his user id
-#    """
-#    answer = get_record(id, name, service)
-#    return bool(answer == )
-
+def retrieve_document(identity, name, service):
+    """
+    Same as the function above. But in this case the document is return entirely
+    """
+    return service.get_document(db=name, doc_id=identity).get_result()
