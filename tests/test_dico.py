@@ -46,3 +46,10 @@ class TestDict(TestCase):
         empty values
         """
         self.assertEqual(dico.check_missing_value(TestDict.dictionnaire1), True)
+
+    def test_get_empty_values(self):
+        """
+        For the registration we need to know what are the empty values
+        so that we can alert the user to fill them
+        """
+        self.assertGreaterEqual(len(dico.get_empty_values(TestDict.dictionnaire1)), 1)

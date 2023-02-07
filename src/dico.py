@@ -22,3 +22,14 @@ def check_missing_value(dictionnaire):
             answer = True
             break
     return answer
+
+def get_empty_values(dictionnaire):
+    """
+    This function should return a list with keys which doesn't have
+    values 
+    """
+    empty_fields = []
+    for keys, values in dictionnaire.items():
+        if values == "":
+            empty_fields.append(keys)
+    return empty_fields

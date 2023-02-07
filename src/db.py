@@ -51,7 +51,7 @@ def insert_doc(dbname, information, service):
             id=information["_id"],
             first_name=information["first name"],
             last_name=information["last name"],
-            Date_of_birth=information["Date of birth"],
+            Date_of_birth=information["Date of Birth"],
             weight=information["weight"],
             height=information["height"],
             password=information["password"]

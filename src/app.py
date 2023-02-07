@@ -6,52 +6,39 @@ can control his health
 import PySimpleGUI as sg
 import db
 import ui
-#import health
+from dico import check_missing_value, dict_emptiness, get_empty_values
+import sys
 
-#WINDOWS = sg.Window("BMI CALCULATION", ui.BMI)
-
-#while True:
-    #EVENTS, VALUES = WINDOWS.read()
-    #if EVENTS == sg.WIN_CLOSED:
-        #break
-    #The code use to extract values from input element and then calculate BNI
-    #if EVENTS == 'calculate':
-        #HEIGHT = float(VALUES['height'])
-        #WEIGHT = float(VALUES['weight'])
-        #BMI = health.imc(HEIGHT, WEIGHT)
-        #WINDOWS['bmi'].update(str(BMI))
-#sg.theme("LightBlue2")
 WINDOWS = sg.Window("Login Screen", ui.LOGIN)
 WINDOWS1 = sg.Window("Registration Screen", ui.REGISTRATION, element_justification='r')
+service = db.authenticate_db()
+
 while True:
-    events, values = WINDOWS.read()
-    if events == sg.WIN_CLOSED:
+    #display login screen
+    events1, values1 = WINDOWS.read()
+
+    #if the user click on the close window icon, just close  the window and exit program
+    if events1 == sg.WIN_CLOSED:
         break
-    if events == "login":
-        user_id = values['username']
-        password = values['password']
-        service = db.authenticate_db()
-        response = db.get_record(user_id, "bmi", service)
-        print(response)
-        if bool(response):
-            #We should display his or her dashboard
-            print("L'utilisateur existe")
-            break
-        else:
-            WINDOWS.close()
-            while True:
-                events1, values1 = WINDOWS1.read()
-                if events1 == 'register':
-                    DOCUMENT = {}
-                    DOCUMENT["_id"] = values1["user id"]
-                    DOCUMENT["first name"] = values1["first name"]
-                    DOCUMENT["last name"] = values1["last name"]
-                    DOCUMENT["Date of birth"] = values1["birth"]
-                    DOCUMENT["weight"] = values1["weight"]
-                    DOCUMENT["height"] = values1["height"]
-                    DOCUMENT["password"] = values1["password"]
-                    if db.get_record == True or DOCUMENT:
-                    print(DOCUMENT)
-                    service = db.authenticate_db()
-                    db.insert_doc("bmi", DOCUMENT, service)
-                    break
+
+    #if user click on register button or after clicked on login button his userid is not in the remote cloudant db, close the login window and then display registration window
+    if (events1 == "register") or (events1 == "login" and db.get_record(values1["username"], "bmi", service) == False):
+        WINDOWS.close()
+        events2, values2 = WINDOWS1.read()
+    #if the user smash the register button on registration windows, check to see if the form is no empty or doesn't have any missing value
+        if events2 == "register":
+            first_check = dict_emptiness(values2)
+            second_check = check_missing_value(values2) 
+    #optionally you can check if his password conform to standard password
+            #This check will be implemented in the future
+    #Also check if the user id provided is not for someone in the db
+            third_check = db.get_record(values2["_id"], "bmi", service)
+    #If the above three check are OK, register the user an then redisplay a new login window to the user for him to enter his credential. Otherwise prompt them to change password or to fill missing values
+            if first_check > 0 and second_check == False and third_check == False:
+                db.insert_doc("bmi", values2, service)
+                WINDOWS1.close()
+                continue
+            else:
+                sg.Popup(f"Please fill this field {get_empty_values(values2)} to complete registration process")
+                break
+    #The user should close the notification window before filling the missing value. And another turn of check should be passed until the field are compliant with our politic
